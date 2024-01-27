@@ -3,7 +3,7 @@
 # ./findmetadados.sh
 
 
-if [ "$1" == "" ];then
+if [ "$1" == "" -o "$2" == "" ];then
     echo "<<<<<<<<<<<<<<<HORUS>>>>>>>>>>>>>>>"
     echo "Modo de uso: $0 localhost.com pdf"
 else
@@ -13,10 +13,10 @@ else
         wget -q $url
         if [ $? -eq 0 ]; then
             echo "Dowload concluido com sucesso!"
+            exiftool *.pdf
+            echo "Meta dados de PDF(s) concluido com SUCESSO!"  
         else   
             echo "Erro ao fazer dowload:("
         fi
     done
 fi
-exiftool *.pdf
-echo "Meta dados de PDF(s) concluido com SUCESSO!"
